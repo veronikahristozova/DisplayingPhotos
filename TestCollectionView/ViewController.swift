@@ -14,7 +14,18 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
     var imageArray = [UIImage]()
     
     override func viewDidLoad() {
-        grabPhotos()
+        if PHPhotoLibrary.authorizationStatus() == .authorized {
+            grabPhotos()
+        } else {
+            PHPhotoLibrary.requestAuthorization() { status in
+                if status == .authorized {
+                    DispatchQueue.main.async {
+                        self.grabPhotos()
+                        self.collectionView?.reloadData()
+                    }
+                } else { print("You need to authorise us in order to use the app") }
+            }
+        }
     }
     
     func grabPhotos() {
@@ -27,18 +38,16 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
         fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         
         let fetchResult = PHAsset.fetchAssets(with: .image, options: fetchOptions)
-            if fetchResult.count > 0 {
-                for i in 0..<fetchResult.count {
-                    imgManager.requestImage(for: fetchResult.object(at: i), targetSize: CGSize(width: 200, height: 200), contentMode: .aspectFill, options: requestOptions, resultHandler: { image, error in
-                        self.imageArray.append(image!)
-                        
-                    })
-                }
-            } else {
-                print("You do not have any photos taken!")
-                self.collectionView?.reloadData()
+        if fetchResult.count > 0 {
+            for i in 0..<fetchResult.count {
+                imgManager.requestImage(for: fetchResult.object(at: i), targetSize: CGSize(width: 200, height: 200), contentMode: .aspectFill, options: requestOptions, resultHandler: { image, error in
+                    self.imageArray.append(image!)
+                    // disp
+                })
             }
-        
+        } else {
+            print("You do not have any photos taken!")
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -69,5 +78,6 @@ class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLa
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 1.0
     }
+    
 }
 
