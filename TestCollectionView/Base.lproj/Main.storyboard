@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ApD-aG-juT">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="IDa-Ly-KXU">
+            <objects>
+                <collectionViewController id="ApD-aG-juT" customClass="ViewController" customModule="TestCollectionView" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="7D5-z5-oKl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mQH-q4-wrv">
+                            <size key="itemSize" width="82" height="83"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="xSX-Vj-Tcz">
+                                <rect key="frame" x="0.0" y="0.0" width="82" height="83"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="82" height="83"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9YG-8Z-RXR"/>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="9YG-8Z-RXR" firstAttribute="centerY" secondItem="xSX-Vj-Tcz" secondAttribute="centerY" id="Ezq-s3-ocW"/>
+                                    <constraint firstItem="9YG-8Z-RXR" firstAttribute="centerX" secondItem="xSX-Vj-Tcz" secondAttribute="centerX" id="Jei-Q0-Hlt"/>
+                                    <constraint firstItem="9YG-8Z-RXR" firstAttribute="height" secondItem="xSX-Vj-Tcz" secondAttribute="height" id="XwH-YB-HjZ"/>
+                                    <constraint firstItem="9YG-8Z-RXR" firstAttribute="width" secondItem="xSX-Vj-Tcz" secondAttribute="width" id="x2K-cP-WGb"/>
+                                </constraints>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="ApD-aG-juT" id="D3O-oC-9on"/>
+                            <outlet property="delegate" destination="ApD-aG-juT" id="deS-d3-hzw"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="km9-cA-b3r" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-89" y="-63"/>
+        </scene>
+    </scenes>
+</document>
